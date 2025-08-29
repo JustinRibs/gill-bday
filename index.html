@@ -5,66 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gill's Birthday Countdown</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="background-animation">
-        <div class="floating-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-            <div class="shape shape-4"></div>
-            <div class="shape shape-5"></div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="hero-section">
-            <div class="profile-card">
-                <div class="profile-image">
-                    <img src="gill-photo.jpg" alt="Gill" class="birthday-photo">
-                    <div class="image-glow"></div>
+    <div class="mobile-container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="profile-section">
+                <div class="profile-image-container">
+                    <img src="gill-photo.jpg" alt="Gill" class="profile-image">
+                    <div class="image-ring"></div>
                 </div>
-                <h1 class="hero-title">Gill's Birthday</h1>
-                <p class="hero-subtitle">Counting down to May 8th</p>
+                <h1 class="main-title">Gill's Birthday</h1>
+                <p class="subtitle">May 8th</p>
             </div>
-        </div>
+        </header>
 
-        <div class="countdown-section">
-            <div class="countdown-grid">
-                <div class="countdown-item">
-                    <div class="countdown-number" id="days">00</div>
-                    <div class="countdown-label">Days</div>
+        <!-- Countdown Section -->
+        <main class="countdown-main">
+            <div class="countdown-container">
+                <div class="countdown-row">
+                    <div class="countdown-card">
+                        <div class="countdown-value" id="days">00</div>
+                        <div class="countdown-label">Days</div>
+                    </div>
+                    <div class="countdown-card">
+                        <div class="countdown-value" id="hours">00</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
                 </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="hours">00</div>
-                    <div class="countdown-label">Hours</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="minutes">00</div>
-                    <div class="countdown-label">Minutes</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="seconds">00</div>
-                    <div class="countdown-label">Seconds</div>
+                <div class="countdown-row">
+                    <div class="countdown-card">
+                        <div class="countdown-value" id="minutes">00</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-card">
+                        <div class="countdown-value" id="seconds">00</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </main>
 
-        <div class="message-section">
-            <div class="message-card" id="message">
-                <div class="message-content">
-                    <p>Get ready for an amazing birthday celebration!</p>
-                </div>
+        <!-- Message Section -->
+        <section class="message-section">
+            <div class="message-bubble" id="message">
+                <p class="message-text">Get ready for an amazing birthday celebration!</p>
             </div>
+        </section>
+
+        <!-- Floating Elements -->
+        <div class="floating-elements">
+            <div class="floating-heart heart-1">💖</div>
+            <div class="floating-heart heart-2">💖</div>
+            <div class="floating-heart heart-3">💖</div>
+            <div class="floating-star star-1">⭐</div>
+            <div class="floating-star star-2">⭐</div>
+            <div class="floating-star star-3">⭐</div>
         </div>
 
-        <div class="celebration-elements">
-            <div class="sparkle sparkle-1">✨</div>
-            <div class="sparkle sparkle-2">✨</div>
-            <div class="sparkle sparkle-3">✨</div>
-            <div class="sparkle sparkle-4">✨</div>
-            <div class="sparkle sparkle-5">✨</div>
+        <!-- Bottom Decoration -->
+        <div class="bottom-decoration">
+            <div class="wave wave-1"></div>
+            <div class="wave wave-2"></div>
+            <div class="wave wave-3"></div>
         </div>
     </div>
     
