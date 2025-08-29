@@ -12,12 +12,12 @@ A beautiful, interactive birthday countdown website designed for Gill with her f
 - **Birthday Celebration**: Special effects and confetti when it's Gill's birthday!
 - **Dynamic Messages**: Different personalized messages based on how close the birthday is
 
-## How to Use
+## How to Use.   
 
 1. **Open the Website**: Simply open `index.html` in any modern web browser
 2. **View the Countdown**: The website will automatically show the countdown to May 8th
-3. **Interactive Features**: 
-   - Click on the time units for a fun animation
+3. **Interactive Features**:
+   - Click on the time units for a fun animation!!
    - Watch the floating balloons and animated background
    - See different messages as the birthday approaches
 
@@ -47,6 +47,7 @@ A beautiful, interactive birthday countdown website designed for Gill with her f
 ## Browser Compatibility
 
 Works in all modern browsers including:
+
 - Chrome
 - Firefox
 - Safari
@@ -55,13 +56,18 @@ Works in all modern browsers including:
 ## Customization
 
 You can easily customize the website by:
+
 - Changing colors in `styles.css`
 - Modifying the birthday date in `script.js` (line with `new Date(currentYear, 4, 8)`)
 - Adding more animations or effects
 - Changing the messages in the `updateMessage()` function
 
 Enjoy the countdown! 🎊
+
 # gill-bday
+
 # gill-bday
+
 # gill-bday
+
 # gill-bday
