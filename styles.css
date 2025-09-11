@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Outfit', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
@@ -30,25 +30,22 @@ body {
 }
 
 .profile-section {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(20px);
-    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
     padding: 2rem 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
 }
 
-.profile-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #ff9ff3);
+.profile-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
+
 
 .profile-image-container {
     position: relative;
@@ -61,8 +58,8 @@ body {
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border: 3px solid #e9ecef;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     position: relative;
     z-index: 2;
@@ -70,36 +67,15 @@ body {
 
 .profile-image:hover {
     transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
-.image-ring {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 140px;
-    height: 140px;
-    border: 2px solid rgba(255, 107, 107, 0.3);
-    border-radius: 50%;
-    animation: ringPulse 2s ease-in-out infinite;
-    z-index: 1;
-}
 
-@keyframes ringPulse {
-    0%, 100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0.5;
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(1.1);
-        opacity: 1;
-    }
-}
 
 .main-title {
     font-size: 2.2rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #ff9ff3);
+    background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -109,8 +85,8 @@ body {
 
 .subtitle {
     font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 400;
+    color: #495057;
+    font-weight: 500;
     letter-spacing: 0.5px;
 }
 
@@ -142,246 +118,65 @@ body {
 
 .countdown-card {
     flex: 1;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
-    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
     padding: 1.5rem 1rem;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-.countdown-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
+
+.countdown-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.95);
 }
 
 .countdown-card:active {
     transform: scale(0.95);
 }
 
-.countdown-card:hover::before {
-    transform: scaleX(1);
-}
 
 .countdown-value {
     font-size: 2.5rem;
     font-weight: 700;
-    color: white;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 0.5rem;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
 }
 
 .countdown-label {
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: #495057;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-/* Message Section */
-.message-section {
-    padding: 1.5rem;
-    position: relative;
-    z-index: 2;
-}
 
-.message-bubble {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(15px);
-    border-radius: 20px;
-    padding: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    animation: messageFloat 3s ease-in-out infinite;
-}
 
-.message-bubble::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #ff9ff3, #ff6b6b);
-}
 
-@keyframes messageFloat {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-5px);
-    }
-}
-
-.message-text {
-    font-size: 1rem;
-    color: white;
-    font-weight: 500;
-    line-height: 1.5;
-    margin: 0;
-}
-
-/* Floating Elements */
-.floating-elements {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.floating-heart,
-.floating-star {
-    position: absolute;
-    font-size: 1.2rem;
-    animation: floatElement 8s ease-in-out infinite;
-    opacity: 0.6;
-}
-
-.heart-1 {
-    top: 15%;
-    left: 10%;
-    animation-delay: 0s;
-}
-
-.heart-2 {
-    top: 25%;
-    right: 15%;
-    animation-delay: 2s;
-}
-
-.heart-3 {
-    bottom: 30%;
-    left: 20%;
-    animation-delay: 4s;
-}
-
-.star-1 {
-    top: 40%;
-    right: 25%;
-    animation-delay: 1s;
-}
-
-.star-2 {
-    bottom: 20%;
-    right: 10%;
-    animation-delay: 3s;
-}
-
-.star-3 {
-    top: 60%;
-    left: 15%;
-    animation-delay: 5s;
-}
-
-@keyframes floatElement {
-    0%, 100% {
-        transform: translateY(0px) rotate(0deg);
-        opacity: 0.6;
-    }
-    50% {
-        transform: translateY(-20px) rotate(180deg);
-        opacity: 1;
-    }
-}
-
-/* Bottom Decoration */
-.bottom-decoration {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.wave {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 200%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50% 50% 0 0;
-    animation: waveMove 6s ease-in-out infinite;
-}
-
-.wave-1 {
-    animation-delay: 0s;
-    opacity: 0.3;
-}
-
-.wave-2 {
-    animation-delay: 2s;
-    opacity: 0.2;
-}
-
-.wave-3 {
-    animation-delay: 4s;
-    opacity: 0.1;
-}
-
-@keyframes waveMove {
-    0%, 100% {
-        transform: translateX(-50%) translateY(0px);
-    }
-    50% {
-        transform: translateX(-50%) translateY(-10px);
-    }
-}
-
-/* Photo Placeholder */
-.photo-placeholder {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #ff6b6b, #ff9ff3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    animation: ringPulse 2s ease-in-out infinite;
-}
 
 /* Tablet Styles */
 @media (min-width: 768px) {
+    .floating-emoji {
+        font-size: 2rem;
+    }
     .profile-image {
         width: 150px;
         height: 150px;
     }
     
-    .image-ring {
-        width: 170px;
-        height: 170px;
-    }
-    
-    .photo-placeholder {
-        width: 150px;
-        height: 150px;
-        font-size: 4rem;
-    }
     
     .main-title {
         font-size: 2.8rem;
@@ -406,6 +201,9 @@ body {
 
 /* Desktop Styles */
 @media (min-width: 1024px) {
+    .floating-emoji {
+        font-size: 2.5rem;
+    }
     .mobile-container {
         max-width: 600px;
         margin: 0 auto;
@@ -416,16 +214,6 @@ body {
         height: 180px;
     }
     
-    .image-ring {
-        width: 200px;
-        height: 200px;
-    }
-    
-    .photo-placeholder {
-        width: 180px;
-        height: 180px;
-        font-size: 5rem;
-    }
     
     .main-title {
         font-size: 3.2rem;
@@ -447,13 +235,417 @@ body {
         padding: 2.5rem 2rem;
     }
     
-    .message-text {
-        font-size: 1.1rem;
+}
+
+/* Floating Emojis */
+.floating-emojis {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.floating-emoji {
+    position: fixed;
+    font-size: 1.5rem;
+    opacity: 0.8;
+    animation: floatAround 12s ease-in-out infinite;
+    user-select: none;
+    z-index: 1;
+    will-change: transform;
+}
+
+/* Individual emoji positions and animations */
+.emoji-1 {
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+    animation-duration: 12s;
+}
+
+.emoji-2 {
+    top: 20%;
+    right: 10%;
+    animation-delay: 1s;
+    animation-duration: 14s;
+}
+
+.emoji-3 {
+    top: 35%;
+    left: 8%;
+    animation-delay: 2s;
+    animation-duration: 16s;
+}
+
+.emoji-4 {
+    top: 50%;
+    right: 5%;
+    animation-delay: 3s;
+    animation-duration: 13s;
+}
+
+.emoji-5 {
+    top: 65%;
+    left: 12%;
+    animation-delay: 4s;
+    animation-duration: 15s;
+}
+
+.emoji-6 {
+    top: 15%;
+    left: 50%;
+    animation-delay: 5s;
+    animation-duration: 11s;
+}
+
+.emoji-7 {
+    top: 40%;
+    right: 20%;
+    animation-delay: 6s;
+    animation-duration: 17s;
+}
+
+.emoji-8 {
+    top: 70%;
+    right: 15%;
+    animation-delay: 7s;
+    animation-duration: 12s;
+}
+
+.emoji-9 {
+    top: 25%;
+    left: 25%;
+    animation-delay: 8s;
+    animation-duration: 14s;
+}
+
+.emoji-10 {
+    top: 55%;
+    left: 35%;
+    animation-delay: 9s;
+    animation-duration: 16s;
+}
+
+.emoji-11 {
+    top: 80%;
+    left: 30%;
+    animation-delay: 10s;
+    animation-duration: 13s;
+}
+
+.emoji-12 {
+    top: 30%;
+    right: 35%;
+    animation-delay: 11s;
+    animation-duration: 15s;
+}
+
+.emoji-13 {
+    top: 60%;
+    right: 30%;
+    animation-delay: 12s;
+    animation-duration: 12s;
+}
+
+.emoji-14 {
+    top: 45%;
+    left: 60%;
+    animation-delay: 13s;
+    animation-duration: 14s;
+}
+
+.emoji-15 {
+    top: 75%;
+    right: 25%;
+    animation-delay: 14s;
+    animation-duration: 16s;
+}
+
+/* Additional Filipino Flag Emojis */
+.emoji-16 {
+    top: 5%;
+    left: 20%;
+    animation-delay: 15s;
+    animation-duration: 18s;
+}
+
+.emoji-17 {
+    top: 12%;
+    right: 40%;
+    animation-delay: 16s;
+    animation-duration: 14s;
+}
+
+.emoji-18 {
+    top: 28%;
+    left: 15%;
+    animation-delay: 17s;
+    animation-duration: 16s;
+}
+
+.emoji-19 {
+    top: 42%;
+    right: 8%;
+    animation-delay: 18s;
+    animation-duration: 15s;
+}
+
+.emoji-20 {
+    top: 58%;
+    left: 5%;
+    animation-delay: 19s;
+    animation-duration: 17s;
+}
+
+.emoji-21 {
+    top: 72%;
+    right: 12%;
+    animation-delay: 20s;
+    animation-duration: 13s;
+}
+
+.emoji-22 {
+    top: 8%;
+    left: 45%;
+    animation-delay: 21s;
+    animation-duration: 19s;
+}
+
+.emoji-23 {
+    top: 35%;
+    right: 45%;
+    animation-delay: 22s;
+    animation-duration: 14s;
+}
+
+.emoji-24 {
+    top: 62%;
+    left: 40%;
+    animation-delay: 23s;
+    animation-duration: 16s;
+}
+
+.emoji-25 {
+    top: 85%;
+    right: 35%;
+    animation-delay: 24s;
+    animation-duration: 18s;
+}
+
+/* Extra mobile emojis */
+.emoji-26 {
+    top: 18%;
+    left: 30%;
+    animation-delay: 25s;
+    animation-duration: 12s;
+}
+
+.emoji-27 {
+    top: 38%;
+    right: 25%;
+    animation-delay: 26s;
+    animation-duration: 15s;
+}
+
+.emoji-28 {
+    top: 68%;
+    left: 25%;
+    animation-delay: 27s;
+    animation-duration: 17s;
+}
+
+.emoji-29 {
+    top: 48%;
+    right: 15%;
+    animation-delay: 28s;
+    animation-duration: 14s;
+}
+
+.emoji-30 {
+    top: 78%;
+    left: 15%;
+    animation-delay: 29s;
+    animation-duration: 16s;
+}
+
+/* Even MORE Filipino Flags! */
+.emoji-31 {
+    top: 3%;
+    left: 35%;
+    animation-delay: 30s;
+    animation-duration: 13s;
+}
+
+.emoji-32 {
+    top: 22%;
+    right: 5%;
+    animation-delay: 31s;
+    animation-duration: 17s;
+}
+
+.emoji-33 {
+    top: 45%;
+    left: 8%;
+    animation-delay: 32s;
+    animation-duration: 15s;
+}
+
+.emoji-34 {
+    top: 67%;
+    right: 8%;
+    animation-delay: 33s;
+    animation-duration: 14s;
+}
+
+.emoji-35 {
+    top: 88%;
+    left: 25%;
+    animation-delay: 34s;
+    animation-duration: 16s;
+}
+
+.emoji-36 {
+    top: 13%;
+    left: 55%;
+    animation-delay: 35s;
+    animation-duration: 18s;
+}
+
+.emoji-37 {
+    top: 33%;
+    right: 50%;
+    animation-delay: 36s;
+    animation-duration: 12s;
+}
+
+.emoji-38 {
+    top: 53%;
+    left: 50%;
+    animation-delay: 37s;
+    animation-duration: 19s;
+}
+
+.emoji-39 {
+    top: 73%;
+    right: 40%;
+    animation-delay: 38s;
+    animation-duration: 15s;
+}
+
+.emoji-40 {
+    top: 93%;
+    left: 45%;
+    animation-delay: 39s;
+    animation-duration: 17s;
+}
+
+.emoji-41 {
+    top: 7%;
+    right: 30%;
+    animation-delay: 40s;
+    animation-duration: 14s;
+}
+
+.emoji-42 {
+    top: 27%;
+    left: 40%;
+    animation-delay: 41s;
+    animation-duration: 16s;
+}
+
+.emoji-43 {
+    top: 47%;
+    right: 20%;
+    animation-delay: 42s;
+    animation-duration: 13s;
+}
+
+.emoji-44 {
+    top: 67%;
+    left: 35%;
+    animation-delay: 43s;
+    animation-duration: 18s;
+}
+
+.emoji-45 {
+    top: 87%;
+    right: 15%;
+    animation-delay: 44s;
+    animation-duration: 15s;
+}
+
+.emoji-46 {
+    top: 17%;
+    left: 65%;
+    animation-delay: 45s;
+    animation-duration: 17s;
+}
+
+.emoji-47 {
+    top: 37%;
+    right: 60%;
+    animation-delay: 46s;
+    animation-duration: 14s;
+}
+
+.emoji-48 {
+    top: 57%;
+    left: 60%;
+    animation-delay: 47s;
+    animation-duration: 16s;
+}
+
+.emoji-49 {
+    top: 77%;
+    right: 55%;
+    animation-delay: 48s;
+    animation-duration: 13s;
+}
+
+.emoji-50 {
+    top: 97%;
+    left: 70%;
+    animation-delay: 49s;
+    animation-duration: 18s;
+}
+
+@keyframes floatAround {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
+        opacity: 0.8;
+    }
+    25% {
+        transform: translateY(-50px) translateX(30px) rotate(90deg) scale(1.2);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-25px) translateX(-40px) rotate(180deg) scale(0.8);
+        opacity: 0.9;
+    }
+    75% {
+        transform: translateY(-60px) translateX(25px) rotate(270deg) scale(1.1);
+        opacity: 1;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .floating-emoji {
+        font-size: 1.8rem;
+        opacity: 0.8;
     }
 }
 
 /* Landscape Mobile */
 @media (max-height: 600px) and (orientation: landscape) {
+    .floating-emoji {
+        font-size: 1.4rem;
+        opacity: 0.6;
+    }
     .header {
         padding: 1rem;
     }
@@ -467,16 +659,6 @@ body {
         height: 80px;
     }
     
-    .image-ring {
-        width: 100px;
-        height: 100px;
-    }
-    
-    .photo-placeholder {
-        width: 80px;
-        height: 80px;
-        font-size: 2rem;
-    }
     
     .main-title {
         font-size: 1.8rem;
@@ -494,12 +676,5 @@ body {
         font-size: 2rem;
     }
     
-    .message-section {
-        padding: 1rem;
-    }
-    
-    .message-bubble {
-        padding: 1rem;
-    }
 }
 

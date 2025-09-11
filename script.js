@@ -5,7 +5,6 @@ class BirthdayCountdown {
         this.hoursElement = document.getElementById('hours');
         this.minutesElement = document.getElementById('minutes');
         this.secondsElement = document.getElementById('seconds');
-        this.messageElement = document.getElementById('message');
         
         this.updateCountdown();
         setInterval(() => this.updateCountdown(), 1000);
@@ -46,14 +45,17 @@ class BirthdayCountdown {
         const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
         
+        // Debug logging
+        console.log(`Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`);
+        
         // Update display with mobile-optimized animations
         this.updateElementWithMobileAnimation(this.daysElement, days);
         this.updateElementWithMobileAnimation(this.hoursElement, hours);
         this.updateElementWithMobileAnimation(this.minutesElement, minutes);
         this.updateElementWithMobileAnimation(this.secondsElement, seconds);
         
-        // Update message based on how close the birthday is
-        this.updateMessage(days);
+        // Update message based on how close the birthday is (if message element exists)
+        // this.updateMessage(days);
     }
     
     updateElementWithMobileAnimation(element, value) {
@@ -67,30 +69,15 @@ class BirthdayCountdown {
             
             setTimeout(() => {
                 element.style.transform = 'scale(1)';
-                element.style.color = 'white';
-                element.style.textShadow = '0 2px 10px rgba(0, 0, 0, 0.3)';
+            element.style.color = '';
+            element.style.textShadow = '';
             }, 200);
         }
     }
     
     updateMessage(days) {
-        let message = '';
-        
-        if (days === 0) {
-            message = "It's almost here, Gill! Get ready for an amazing birthday! 🎉";
-        } else if (days === 1) {
-            message = "Tomorrow is your big day, Gill! The excitement is building! 🎈";
-        } else if (days <= 7) {
-            message = "Just a few days left, Gill! The countdown is almost over! ⏰";
-        } else if (days <= 30) {
-            message = "Less than a month to go, Gill! The anticipation is growing! 🌟";
-        } else if (days <= 90) {
-            message = "Getting closer, Gill! The birthday magic is in the air! ✨";
-        } else {
-            message = "Get ready for an amazing birthday celebration, Gill! 🎊";
-        }
-        
-        this.messageElement.querySelector('.message-text').textContent = message;
+        // Message functionality removed since message section was removed
+        // This method is kept for potential future use
     }
     
     displayBirthdayMessage() {
@@ -98,11 +85,6 @@ class BirthdayCountdown {
         this.hoursElement.textContent = '00';
         this.minutesElement.textContent = '00';
         this.secondsElement.textContent = '00';
-        
-        this.messageElement.querySelector('.message-text').innerHTML = `
-            <span style="font-size: 1.3rem; font-weight: 700; display: block; margin-bottom: 0.5rem;">🎉 HAPPY BIRTHDAY, GILL! 🎉</span>
-            <span>Today is your special day! Enjoy every moment! 🎂🎈</span>
-        `;
         
         // Add mobile-optimized celebration effects
         this.addMobileCelebrationEffects();
