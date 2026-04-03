@@ -6,10 +6,18 @@
 
 body {
     font-family: 'Outfit', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(-45deg, #c471f5, #fa71cd, #f64f59, #12c2e9, #c471f5);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
+}
+
+@keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Mobile Container */
@@ -19,33 +27,39 @@ body {
     flex-direction: column;
     position: relative;
     overflow: hidden;
+    padding-bottom: 2rem;
 }
 
 /* Header Section */
 .header {
-    padding: 2rem 1.5rem 1rem;
+    padding: 2.5rem 1.5rem 1rem;
     text-align: center;
     position: relative;
     z-index: 2;
 }
 
 .profile-section {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 2rem 1.5rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-radius: 28px;
+    padding: 2.5rem 1.5rem 2rem;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.05);
     position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow: visible;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     transition: all 0.3s ease;
 }
 
 .profile-section:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+    box-shadow:
+        0 20px 56px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
-
 
 .profile-image-container {
     position: relative;
@@ -53,39 +67,61 @@ body {
     margin-bottom: 1.5rem;
 }
 
+/* Spinning rainbow ring */
+.image-ring {
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    width: calc(100% + 12px);
+    height: calc(100% + 12px);
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        #ff6b6b,
+        #ffd93d,
+        #6bcb77,
+        #4d96ff,
+        #c77dff,
+        #fa71cd,
+        #ff6b6b
+    );
+    animation: spinRing 3s linear infinite;
+    z-index: 1;
+}
+
+@keyframes spinRing {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
 .profile-image {
     width: 120px;
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #e9ecef;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 4px solid rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
     transition: transform 0.3s ease;
     position: relative;
     z-index: 2;
 }
 
 .profile-image:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    transform: scale(1.06) rotate(3deg);
 }
-
-
 
 .main-title {
     font-size: 2.2rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
     margin-bottom: 0.5rem;
     letter-spacing: -0.02em;
 }
 
 .subtitle {
-    font-size: 1.1rem;
-    color: #495057;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.88);
     font-weight: 500;
     letter-spacing: 0.5px;
 }
@@ -96,7 +132,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     position: relative;
     z-index: 2;
 }
@@ -118,10 +154,11 @@ body {
 
 .countdown-card {
     flex: 1;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    border-radius: 16px;
-    padding: 1.5rem 1rem;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-radius: 22px;
+    padding: 1.75rem 1rem;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.3);
     transition: all 0.3s ease;
@@ -129,112 +166,76 @@ body {
     overflow: hidden;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
+/* Shimmer sweep */
+.countdown-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.18),
+        transparent
+    );
+    animation: shimmer 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.countdown-card:nth-child(1)::before { animation-delay: 0s; }
+.countdown-card:nth-child(2)::before { animation-delay: 1s; }
+
+@keyframes shimmer {
+    0%        { left: -60%; }
+    40%, 100% { left: 120%; }
+}
 
 .countdown-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    background: rgba(255, 255, 255, 0.95);
+    transform: translateY(-5px);
+    box-shadow:
+        0 20px 48px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.22);
 }
 
 .countdown-card:active {
     transform: scale(0.95);
 }
 
-
 .countdown-value {
-    font-size: 2.5rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
     margin-bottom: 0.5rem;
     transition: all 0.3s ease;
+    line-height: 1;
 }
 
 .countdown-label {
-    font-size: 0.85rem;
-    color: #495057;
-    font-weight: 500;
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
-
-
-
-
-/* Tablet Styles */
-@media (min-width: 768px) {
-    .floating-emoji {
-        font-size: 2rem;
-    }
-    .profile-image {
-        width: 150px;
-        height: 150px;
-    }
-    
-    
-    .main-title {
-        font-size: 2.8rem;
-    }
-    
-    .countdown-value {
-        font-size: 3rem;
-    }
-    
-    .countdown-container {
-        max-width: 500px;
-    }
-    
-    .countdown-row {
-        gap: 1.5rem;
-    }
-    
-    .countdown-card {
-        padding: 2rem 1.5rem;
-    }
-}
-
-/* Desktop Styles */
-@media (min-width: 1024px) {
-    .floating-emoji {
-        font-size: 2.5rem;
-    }
-    .mobile-container {
-        max-width: 600px;
-        margin: 0 auto;
-    }
-    
-    .profile-image {
-        width: 180px;
-        height: 180px;
-    }
-    
-    
-    .main-title {
-        font-size: 3.2rem;
-    }
-    
-    .countdown-value {
-        font-size: 3.5rem;
-    }
-    
-    .countdown-container {
-        max-width: 600px;
-    }
-    
-    .countdown-row {
-        gap: 2rem;
-    }
-    
-    .countdown-card {
-        padding: 2.5rem 2rem;
-    }
-    
+/* Tagline */
+.tagline {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 1.5rem;
+    letter-spacing: 0.3px;
+    font-style: italic;
 }
 
 /* Floating Emojis */
@@ -252,383 +253,140 @@ body {
 .floating-emoji {
     position: fixed;
     font-size: 1.5rem;
-    opacity: 0.8;
+    opacity: 0.55;
     animation: floatAround 12s ease-in-out infinite;
     user-select: none;
     z-index: 1;
     will-change: transform;
 }
 
-/* Individual emoji positions and animations */
-.emoji-1 {
-    top: 10%;
-    left: 5%;
-    animation-delay: 0s;
-    animation-duration: 12s;
-}
-
-.emoji-2 {
-    top: 20%;
-    right: 10%;
-    animation-delay: 1s;
-    animation-duration: 14s;
-}
-
-.emoji-3 {
-    top: 35%;
-    left: 8%;
-    animation-delay: 2s;
-    animation-duration: 16s;
-}
-
-.emoji-4 {
-    top: 50%;
-    right: 5%;
-    animation-delay: 3s;
-    animation-duration: 13s;
-}
-
-.emoji-5 {
-    top: 65%;
-    left: 12%;
-    animation-delay: 4s;
-    animation-duration: 15s;
-}
-
-.emoji-6 {
-    top: 15%;
-    left: 50%;
-    animation-delay: 5s;
-    animation-duration: 11s;
-}
-
-.emoji-7 {
-    top: 40%;
-    right: 20%;
-    animation-delay: 6s;
-    animation-duration: 17s;
-}
-
-.emoji-8 {
-    top: 70%;
-    right: 15%;
-    animation-delay: 7s;
-    animation-duration: 12s;
-}
-
-.emoji-9 {
-    top: 25%;
-    left: 25%;
-    animation-delay: 8s;
-    animation-duration: 14s;
-}
-
-.emoji-10 {
-    top: 55%;
-    left: 35%;
-    animation-delay: 9s;
-    animation-duration: 16s;
-}
-
-.emoji-11 {
-    top: 80%;
-    left: 30%;
-    animation-delay: 10s;
-    animation-duration: 13s;
-}
-
-.emoji-12 {
-    top: 30%;
-    right: 35%;
-    animation-delay: 11s;
-    animation-duration: 15s;
-}
-
-.emoji-13 {
-    top: 60%;
-    right: 30%;
-    animation-delay: 12s;
-    animation-duration: 12s;
-}
-
-.emoji-14 {
-    top: 45%;
-    left: 60%;
-    animation-delay: 13s;
-    animation-duration: 14s;
-}
-
-.emoji-15 {
-    top: 75%;
-    right: 25%;
-    animation-delay: 14s;
-    animation-duration: 16s;
-}
-
-/* Additional Filipino Flag Emojis */
-.emoji-16 {
-    top: 5%;
-    left: 20%;
-    animation-delay: 15s;
-    animation-duration: 18s;
-}
-
-.emoji-17 {
-    top: 12%;
-    right: 40%;
-    animation-delay: 16s;
-    animation-duration: 14s;
-}
-
-.emoji-18 {
-    top: 28%;
-    left: 15%;
-    animation-delay: 17s;
-    animation-duration: 16s;
-}
-
-.emoji-19 {
-    top: 42%;
-    right: 8%;
-    animation-delay: 18s;
-    animation-duration: 15s;
-}
-
-.emoji-20 {
-    top: 58%;
-    left: 5%;
-    animation-delay: 19s;
-    animation-duration: 17s;
-}
-
-.emoji-21 {
-    top: 72%;
-    right: 12%;
-    animation-delay: 20s;
-    animation-duration: 13s;
-}
-
-.emoji-22 {
-    top: 8%;
-    left: 45%;
-    animation-delay: 21s;
-    animation-duration: 19s;
-}
-
-.emoji-23 {
-    top: 35%;
-    right: 45%;
-    animation-delay: 22s;
-    animation-duration: 14s;
-}
-
-.emoji-24 {
-    top: 62%;
-    left: 40%;
-    animation-delay: 23s;
-    animation-duration: 16s;
-}
-
-.emoji-25 {
-    top: 85%;
-    right: 35%;
-    animation-delay: 24s;
-    animation-duration: 18s;
-}
-
-/* Extra mobile emojis */
-.emoji-26 {
-    top: 18%;
-    left: 30%;
-    animation-delay: 25s;
-    animation-duration: 12s;
-}
-
-.emoji-27 {
-    top: 38%;
-    right: 25%;
-    animation-delay: 26s;
-    animation-duration: 15s;
-}
-
-.emoji-28 {
-    top: 68%;
-    left: 25%;
-    animation-delay: 27s;
-    animation-duration: 17s;
-}
-
-.emoji-29 {
-    top: 48%;
-    right: 15%;
-    animation-delay: 28s;
-    animation-duration: 14s;
-}
-
-.emoji-30 {
-    top: 78%;
-    left: 15%;
-    animation-delay: 29s;
-    animation-duration: 16s;
-}
-
-/* Even MORE Filipino Flags! */
-.emoji-31 {
-    top: 3%;
-    left: 35%;
-    animation-delay: 30s;
-    animation-duration: 13s;
-}
-
-.emoji-32 {
-    top: 22%;
-    right: 5%;
-    animation-delay: 31s;
-    animation-duration: 17s;
-}
-
-.emoji-33 {
-    top: 45%;
-    left: 8%;
-    animation-delay: 32s;
-    animation-duration: 15s;
-}
-
-.emoji-34 {
-    top: 67%;
-    right: 8%;
-    animation-delay: 33s;
-    animation-duration: 14s;
-}
-
-.emoji-35 {
-    top: 88%;
-    left: 25%;
-    animation-delay: 34s;
-    animation-duration: 16s;
-}
-
-.emoji-36 {
-    top: 13%;
-    left: 55%;
-    animation-delay: 35s;
-    animation-duration: 18s;
-}
-
-.emoji-37 {
-    top: 33%;
-    right: 50%;
-    animation-delay: 36s;
-    animation-duration: 12s;
-}
-
-.emoji-38 {
-    top: 53%;
-    left: 50%;
-    animation-delay: 37s;
-    animation-duration: 19s;
-}
-
-.emoji-39 {
-    top: 73%;
-    right: 40%;
-    animation-delay: 38s;
-    animation-duration: 15s;
-}
-
-.emoji-40 {
-    top: 93%;
-    left: 45%;
-    animation-delay: 39s;
-    animation-duration: 17s;
-}
-
-.emoji-41 {
-    top: 7%;
-    right: 30%;
-    animation-delay: 40s;
-    animation-duration: 14s;
-}
-
-.emoji-42 {
-    top: 27%;
-    left: 40%;
-    animation-delay: 41s;
-    animation-duration: 16s;
-}
-
-.emoji-43 {
-    top: 47%;
-    right: 20%;
-    animation-delay: 42s;
-    animation-duration: 13s;
-}
-
-.emoji-44 {
-    top: 67%;
-    left: 35%;
-    animation-delay: 43s;
-    animation-duration: 18s;
-}
-
-.emoji-45 {
-    top: 87%;
-    right: 15%;
-    animation-delay: 44s;
-    animation-duration: 15s;
-}
-
-.emoji-46 {
-    top: 17%;
-    left: 65%;
-    animation-delay: 45s;
-    animation-duration: 17s;
-}
-
-.emoji-47 {
-    top: 37%;
-    right: 60%;
-    animation-delay: 46s;
-    animation-duration: 14s;
-}
-
-.emoji-48 {
-    top: 57%;
-    left: 60%;
-    animation-delay: 47s;
-    animation-duration: 16s;
-}
-
-.emoji-49 {
-    top: 77%;
-    right: 55%;
-    animation-delay: 48s;
-    animation-duration: 13s;
-}
-
-.emoji-50 {
-    top: 97%;
-    left: 70%;
-    animation-delay: 49s;
-    animation-duration: 18s;
-}
-
 @keyframes floatAround {
     0%, 100% {
         transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
-        opacity: 0.8;
+        opacity: 0.55;
     }
     25% {
         transform: translateY(-50px) translateX(30px) rotate(90deg) scale(1.2);
-        opacity: 1;
+        opacity: 0.85;
     }
     50% {
         transform: translateY(-25px) translateX(-40px) rotate(180deg) scale(0.8);
-        opacity: 0.9;
+        opacity: 0.65;
     }
     75% {
         transform: translateY(-60px) translateX(25px) rotate(270deg) scale(1.1);
-        opacity: 1;
+        opacity: 0.85;
+    }
+}
+
+/* Individual emoji positions — all delays capped at 14s so they're always visible */
+.emoji-1  { top: 10%; left: 5%;   animation-delay: 0s;    animation-duration: 12s; }
+.emoji-2  { top: 20%; right: 10%; animation-delay: 1s;    animation-duration: 14s; }
+.emoji-3  { top: 35%; left: 8%;   animation-delay: 2s;    animation-duration: 16s; }
+.emoji-4  { top: 50%; right: 5%;  animation-delay: 3s;    animation-duration: 13s; }
+.emoji-5  { top: 65%; left: 12%;  animation-delay: 4s;    animation-duration: 15s; }
+.emoji-6  { top: 15%; left: 50%;  animation-delay: 5s;    animation-duration: 11s; }
+.emoji-7  { top: 40%; right: 20%; animation-delay: 6s;    animation-duration: 17s; }
+.emoji-8  { top: 70%; right: 15%; animation-delay: 7s;    animation-duration: 12s; }
+.emoji-9  { top: 25%; left: 25%;  animation-delay: 8s;    animation-duration: 14s; }
+.emoji-10 { top: 55%; left: 35%;  animation-delay: 9s;    animation-duration: 16s; }
+.emoji-11 { top: 80%; left: 30%;  animation-delay: 10s;   animation-duration: 13s; }
+.emoji-12 { top: 30%; right: 35%; animation-delay: 11s;   animation-duration: 15s; }
+.emoji-13 { top: 60%; right: 30%; animation-delay: 12s;   animation-duration: 12s; }
+.emoji-14 { top: 45%; left: 60%;  animation-delay: 13s;   animation-duration: 14s; }
+.emoji-15 { top: 75%; right: 25%; animation-delay: 14s;   animation-duration: 16s; }
+
+.emoji-16 { top: 5%;  left: 20%;  animation-delay: 0.5s;  animation-duration: 18s; }
+.emoji-17 { top: 12%; right: 40%; animation-delay: 2s;    animation-duration: 14s; }
+.emoji-18 { top: 28%; left: 15%;  animation-delay: 4s;    animation-duration: 16s; }
+.emoji-19 { top: 42%; right: 8%;  animation-delay: 6s;    animation-duration: 15s; }
+.emoji-20 { top: 58%; left: 5%;   animation-delay: 8s;    animation-duration: 17s; }
+.emoji-21 { top: 72%; right: 12%; animation-delay: 10s;   animation-duration: 13s; }
+.emoji-22 { top: 8%;  left: 45%;  animation-delay: 12s;   animation-duration: 19s; }
+.emoji-23 { top: 35%; right: 45%; animation-delay: 1.5s;  animation-duration: 14s; }
+.emoji-24 { top: 62%; left: 40%;  animation-delay: 3.5s;  animation-duration: 16s; }
+.emoji-25 { top: 85%; right: 35%; animation-delay: 5.5s;  animation-duration: 18s; }
+
+.emoji-26 { top: 18%; left: 30%;  animation-delay: 0s;    animation-duration: 12s; }
+.emoji-27 { top: 38%; right: 25%; animation-delay: 2s;    animation-duration: 15s; }
+.emoji-28 { top: 68%; left: 25%;  animation-delay: 4.5s;  animation-duration: 17s; }
+.emoji-29 { top: 48%; right: 15%; animation-delay: 7s;    animation-duration: 14s; }
+.emoji-30 { top: 78%; left: 15%;  animation-delay: 9.5s;  animation-duration: 16s; }
+
+.emoji-31 { top: 3%;  left: 35%;  animation-delay: 1s;    animation-duration: 13s; }
+.emoji-32 { top: 22%; right: 5%;  animation-delay: 3s;    animation-duration: 17s; }
+.emoji-33 { top: 45%; left: 8%;   animation-delay: 5s;    animation-duration: 15s; }
+.emoji-34 { top: 67%; right: 8%;  animation-delay: 7.5s;  animation-duration: 14s; }
+.emoji-35 { top: 88%; left: 25%;  animation-delay: 9s;    animation-duration: 16s; }
+.emoji-36 { top: 13%; left: 55%;  animation-delay: 11s;   animation-duration: 18s; }
+.emoji-37 { top: 33%; right: 50%; animation-delay: 0.5s;  animation-duration: 12s; }
+.emoji-38 { top: 53%; left: 50%;  animation-delay: 2.5s;  animation-duration: 19s; }
+.emoji-39 { top: 73%; right: 40%; animation-delay: 4s;    animation-duration: 15s; }
+.emoji-40 { top: 93%; left: 45%;  animation-delay: 6s;    animation-duration: 17s; }
+.emoji-41 { top: 7%;  right: 30%; animation-delay: 8.5s;  animation-duration: 14s; }
+.emoji-42 { top: 27%; left: 40%;  animation-delay: 10.5s; animation-duration: 16s; }
+.emoji-43 { top: 47%; right: 20%; animation-delay: 13s;   animation-duration: 13s; }
+.emoji-44 { top: 67%; left: 35%;  animation-delay: 1s;    animation-duration: 18s; }
+.emoji-45 { top: 87%; right: 15%; animation-delay: 3s;    animation-duration: 15s; }
+.emoji-46 { top: 17%; left: 65%;  animation-delay: 5.5s;  animation-duration: 17s; }
+.emoji-47 { top: 37%; right: 60%; animation-delay: 7s;    animation-duration: 14s; }
+.emoji-48 { top: 57%; left: 60%;  animation-delay: 9s;    animation-duration: 16s; }
+.emoji-49 { top: 77%; right: 55%; animation-delay: 11.5s; animation-duration: 13s; }
+.emoji-50 { top: 97%; left: 70%;  animation-delay: 13.5s; animation-duration: 18s; }
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+    .floating-emoji {
+        font-size: 2rem;
+    }
+    .profile-image {
+        width: 150px;
+        height: 150px;
+    }
+    .main-title {
+        font-size: 2.8rem;
+    }
+    .countdown-value {
+        font-size: 3.5rem;
+    }
+    .countdown-container {
+        max-width: 500px;
+    }
+    .countdown-row {
+        gap: 1.5rem;
+    }
+    .countdown-card {
+        padding: 2rem 1.5rem;
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+    .floating-emoji {
+        font-size: 2.5rem;
+    }
+    .mobile-container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .profile-image {
+        width: 180px;
+        height: 180px;
+    }
+    .main-title {
+        font-size: 3.2rem;
+    }
+    .countdown-value {
+        font-size: 4rem;
+    }
+    .countdown-container {
+        max-width: 600px;
+    }
+    .countdown-row {
+        gap: 2rem;
+    }
+    .countdown-card {
+        padding: 2.5rem 2rem;
     }
 }
 
@@ -636,7 +394,7 @@ body {
 @media (max-width: 768px) {
     .floating-emoji {
         font-size: 1.8rem;
-        opacity: 0.8;
+        opacity: 0.5;
     }
 }
 
@@ -644,37 +402,28 @@ body {
 @media (max-height: 600px) and (orientation: landscape) {
     .floating-emoji {
         font-size: 1.4rem;
-        opacity: 0.6;
+        opacity: 0.4;
     }
     .header {
         padding: 1rem;
     }
-    
     .profile-section {
         padding: 1.5rem;
     }
-    
     .profile-image {
         width: 80px;
         height: 80px;
     }
-    
-    
     .main-title {
         font-size: 1.8rem;
     }
-    
     .countdown-main {
         padding: 0.5rem;
     }
-    
     .countdown-card {
         padding: 1rem 0.5rem;
     }
-    
     .countdown-value {
         font-size: 2rem;
     }
-    
 }
-
